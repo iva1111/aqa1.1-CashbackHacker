@@ -7,30 +7,40 @@ import static org.testng.Assert.*;
 public class CashbackHackServiceTest {
 
         @Test
-        public void shouldAddAmountUp1000 () {
+        public void shouldReturn250IfAmountIs750() {
             CashbackHackService service = new CashbackHackService();
-            int amount = 900;
-            int expected = 100;
+            int amount = 750;
+            int expected = 250;
             int actual = service.remain(amount);
             assertEquals(actual, expected);
         }
 
         @Test
-        public void shouldReturn10IfAmountIs2000() {
-            CashbackHackService service = new CashbackHackService();
-            int amount = 2000;
-            int expected = 10;
-            int actual = service.remain(amount);
-            assertEquals(actual, expected);
-        }
-
-        @Test
-        public void shouldCalculateBonusFor1000() {
+        public void shouldReturn0IfAmountIs1000 () {
             CashbackHackService service = new CashbackHackService();
             int amount = 1000;
             int expected = 0;
             int actual = service.remain(amount);
             assertEquals(actual, expected);
         }
+
+        @Test
+        public void shouldReturn1IfAmountIs999() {
+            CashbackHackService service = new CashbackHackService();
+            int amount = 999;
+            int expected = 1;
+            int actual = service.remain(amount);
+            assertEquals(actual, expected);
+        }
+
+        @Test
+        public void shouldReturn0IfAmountMore1000() {
+            CashbackHackService service = new CashbackHackService();
+            int amount = 1010;
+            int expected = 0;
+            int actual = service.remain(amount);
+            assertEquals(actual, expected);
+        }
+
 
 }
